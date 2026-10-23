@@ -1,0 +1,95 @@
+/* ── Page Loader ─────────────────────────────────────────────── */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: #FFFBEB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: loaderFadeIn 0.2s ease;
+}
+
+@keyframes loaderFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Fade out class — add this class to trigger exit */
+.page-loader.fade-out {
+  animation: loaderFadeOut 0.4s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes loaderFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* ── Content wrapper ─────────────────────────────────────────── */
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  animation: loaderSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes loaderSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Logo ────────────────────────────────────────────────────── */
+.loader-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-logo img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1);    opacity: 1;    }
+  50%       { transform: scale(1.06); opacity: 0.85; }
+}
+
+/* ── Animated dots spinner ───────────────────────────────────── */
+.loader-spinner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loader-spinner span {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #d97706;
+  animation: dotBounce 1.2s ease-in-out infinite;
+}
+
+.loader-spinner span:nth-child(1) { animation-delay: 0s;    background: #d97706; }
+.loader-spinner span:nth-child(2) { animation-delay: 0.18s; background: #f59e0b; }
+.loader-spinner span:nth-child(3) { animation-delay: 0.36s; background: #fbbf24; }
+
+@keyframes dotBounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40%           { transform: scale(1.2); opacity: 1;   }
+}
+
+/* ── Message ─────────────────────────────────────────────────── */
+.loader-message {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #a16207;
+  letter-spacing: 0.02em;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  margin: 0;
+}

@@ -1,0 +1,75 @@
+/* For information on how to create your own theme, please refer to:
+http://ionicframework.com/docs/theming/ */
+h2 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+ion-card {
+  border-radius: 12px;
+}
+
+:root {
+  --ion-color-primary: #1A56DB;
+  --ion-color-primary-rgb: 26, 86, 219;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #1648be;
+  --ion-color-primary-tint: #3167df;
+
+  --ion-color-success: #0E9F6E;
+  --ion-color-success-rgb: 14, 159, 110;
+  --ion-color-success-contrast: #ffffff;
+
+  --ion-color-warning: #FACA15;
+  --ion-color-warning-rgb: 250, 202, 21;
+  --ion-color-warning-contrast: #1a1a1a;
+
+  --ion-color-danger: #E02424;
+  --ion-color-danger-rgb: 224, 36, 36;
+  --ion-color-danger-contrast: #ffffff;
+
+  --ion-background-color: #F3F4F6;
+  --ion-background-color-rgb: 243, 244, 246;
+
+  --ion-text-color: #111827;
+  --ion-text-color-rgb: 17, 24, 39;
+
+  --ion-font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --app-accent: #1A56DB;
+  --app-accent-light: #EBF0FE;
+  --app-green: #0E9F6E;
+  --app-green-light: #E3F9F0;
+  --app-orange: #FF8C00;
+  --app-orange-light: #FFF3E0;
+  --app-red: #E02424;
+  --app-red-light: #FDE8E8;
+  --app-yellow: #FACA15;
+  --app-yellow-light: #FEFCE8;
+  --app-card-bg: #FFFFFF;
+  --app-page-bg: #F3F4F6;
+  --app-text-primary: #111827;
+  --app-text-secondary: #6B7280;
+  --app-text-muted: #9CA3AF;
+  --app-border: #E5E7EB;
+  --app-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --app-shadow-md: 0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ion-background-color: #0F172A;
+    --ion-text-color: #F1F5F9;
+    --app-card-bg: #1E293B;
+    --app-page-bg: #0F172A;
+    --app-text-primary: #F1F5F9;
+    --app-text-secondary: #94A3B8;
+    --app-text-muted: #64748B;
+    --app-border: #334155;
+    --app-accent-light: #1E3A5F;
+    --app-green-light: #0F3D2E;
+    --app-orange-light: #3D2200;
+    --app-red-light: #3D0A0A;
+    --app-yellow-light: #3D3300;
+  }
+}

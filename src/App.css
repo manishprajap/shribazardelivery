@@ -1,0 +1,433 @@
+/* ── Design tokens ──────────────────────────────────────────── */
+:root {
+  --bg-base:        #FFFBEB;
+  --bg-surface:     #ffffff;
+  --bg-raised:      #fef9ef;
+  --border:         #fde68a;
+  --border-hover:   #fbbf24;
+  --accent:         #d97706;
+  --accent-hover:   #b45309;
+  --text-primary:   #1c1917;
+  --text-secondary: #78350f;
+  --text-muted:     #a16207;
+  --sidebar-width:  240px;
+  --header-height:  60px;
+  --radius-sm:      6px;
+  --radius-md:      10px;
+  --radius-lg:      14px;
+}
+
+/* ── Reset / base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Layout shell ───────────────────────────────────────────── */
+.app-root {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ── Sidebar ────────────────────────────────────────────────── */
+/* Sidebar.tsx should apply these classes */
+.sidebar {
+  width: var(--sidebar-width);
+  min-height: 100vh;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 200;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Desktop: always visible */
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(0) !important;
+  }
+}
+
+/* Mobile: slide in/out */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: 8px 0 32px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Sidebar overlay (mobile) */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 199;
+  backdrop-filter: blur(2px);
+}
+
+@media (max-width: 768px) {
+  .sidebar-overlay {
+    display: block;
+  }
+}
+
+/* ── Main content area ──────────────────────────────────────── */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin-left: var(--sidebar-width);
+  transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+}
+
+/* ── Top header ─────────────────────────────────────────────── */
+/* .top-header {
+  height: var(--header-height);
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+} */
+
+.header-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+
+.top-header {
+   height: var(--header-height);
+  background: var(--bg-surface);
+  border-bottom: 4px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px; /* adjust to match your existing spacing */
+   position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Icon button */
+.icon-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.icon-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  background: var(--bg-raised);
+}
+
+.notif-dot {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 7px;
+  height: 7px;
+  background: #ef4444;
+  border-radius: 50%;
+  border: 1.5px solid var(--bg-surface);
+}
+
+/* Avatar + username */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d97706, #b45309);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.header-username {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 480px) {
+  .header-username { display: none; }
+}
+
+/* Logout button */
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.logout-btn:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+@media (max-width: 480px) {
+  .logout-btn span { display: none; }
+  .logout-btn { padding: 0 9px; }
+}
+
+/* ── Hamburger (mobile) ─────────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.hamburger span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  transition: background 0.15s;
+}
+
+.hamburger:hover span {
+  background: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+}
+
+/* ── Page wrapper — fills remaining height, no outer scroll ──── */
+.page-wrapper {
+  flex: 1;
+  padding: 14px 16px;
+  background: var(--bg-base);
+  height: calc(100vh - var(--header-height));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* inner page div fills wrapper */
+.page-wrapper > div {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .page-wrapper { padding: 10px 12px; }
+}
+
+/* ── Sidebar inner layout (for Sidebar.tsx) ─────────────────── */
+.sidebar-logo {
+  height: var(--header-height);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 1.25rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* In your Sidebar.tsx, use: <img src="/shrilogo.jpeg" alt="logo" style={{height:'36px',width:'auto'}} /> */
+.sidebar-logo img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+}
+
+.sidebar-logo-icon {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.sidebar-logo-text {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 0.75rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow-y: auto;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: background 0.15s, color 0.15s;
+  font-family: inherit;
+}
+
+.sidebar-nav-item:hover {
+  background: var(--bg-raised);
+  color: var(--text-primary);
+}
+
+.sidebar-nav-item.active {
+  background: rgba(217, 119, 6, 0.10);
+  color: #b45309;
+}
+
+.sidebar-nav-item.active svg {
+  color: #b45309;
+}
+
+.sidebar-section-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0.75rem 12px 0.25rem;
+}
+
+.sidebar-footer {
+  padding: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;        /* ← scroll ke liye zaroori */
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+
+.table-wrap {
+  flex: 1;
+  min-height: 0;        /* ← yeh add karo */
+  overflow-y: auto;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* Optional: keep header sticky */
+table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--card-bg, #fff);
+  z-index: 2;
+}
+
+.form-group label {
+  color: var(--text-secondary);
+}
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+@media (max-width: 600px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
+.modal {
+  width: 100%;
+  max-width: 500px;
+  background: var(--bg-surface); /* ✅ instead of #fff */
+  border-radius: var(--radius-md);
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}

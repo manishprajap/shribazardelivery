@@ -1,0 +1,444 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+* { box-sizing: border-box; }
+
+ion-content {
+  --background: var(--app-page-bg);
+}
+
+ion-header ion-toolbar {
+  --background: var(--app-card-bg);
+  --border-color: var(--app-border);
+  --color: var(--app-text-primary);
+}
+
+ion-header ion-title {
+  font-family: var(--ion-font-family);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--app-text-primary);
+}
+
+.custom-tab-bar {
+  --background: var(--app-card-bg);
+  --border: 1px solid var(--app-border);
+  height: 60px;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.custom-tab-bar ion-tab-button {
+  --color: var(--app-text-muted);
+  --color-selected: var(--app-accent);
+  font-size: 10px;
+  font-family: var(--ion-font-family);
+}
+
+.custom-tab-bar ion-tab-button ion-icon {
+  font-size: 22px;
+}
+
+.page-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Cards */
+.app-card {
+  background: var(--app-card-bg);
+  border-radius: 16px;
+  box-shadow: var(--app-shadow);
+  overflow: hidden;
+}
+
+.app-card-padded {
+  background: var(--app-card-bg);
+  border-radius: 16px;
+  box-shadow: var(--app-shadow);
+  padding: 16px;
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.badge-assigned  { background: var(--app-accent-light);  color: var(--app-accent); }
+.badge-picked    { background: var(--app-orange-light);  color: var(--app-orange); }
+.badge-delivered { background: var(--app-green-light);   color: var(--app-green);  }
+.badge-cancelled { background: var(--app-red-light);     color: var(--app-red);    }
+.badge-pending   { background: var(--app-yellow-light);  color: #92400E; }
+
+/* Section header */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--app-text-primary);
+  letter-spacing: 0.02em;
+}
+.section-link {
+  font-size: 12px;
+  color: var(--app-accent);
+  font-weight: 500;
+}
+
+/* Stat grid */
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.stat-tile {
+  background: var(--app-card-bg);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: var(--app-shadow);
+}
+
+.stat-tile .icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.stat-tile .label {
+  font-size: 11px;
+  color: var(--app-text-secondary);
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+
+.stat-tile .value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--app-text-primary);
+  line-height: 1;
+}
+
+.stat-tile .sub {
+  font-size: 10px;
+  color: var(--app-text-muted);
+  margin-top: 4px;
+}
+
+/* Order cards */
+.order-card {
+  background: var(--app-card-bg);
+  border-radius: 14px;
+  padding: 14px;
+  box-shadow: var(--app-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-id {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--app-accent);
+  font-family: 'Courier New', monospace;
+}
+
+.order-customer {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--app-text-primary);
+}
+
+.order-vendor {
+  font-size: 12px;
+  color: var(--app-text-secondary);
+  margin-top: 1px;
+}
+
+.order-addr {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  background: var(--app-page-bg);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.order-addr-text {
+  font-size: 12px;
+  color: var(--app-text-secondary);
+  line-height: 1.5;
+}
+
+.order-addr-dist {
+  font-size: 11px;
+  color: var(--app-text-muted);
+  margin-top: 2px;
+}
+
+.order-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-amount {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--app-text-primary);
+}
+
+.action-btn {
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-family: var(--ion-font-family);
+  transition: opacity 0.15s;
+}
+
+.action-btn:active { opacity: 0.8; }
+
+.btn-primary {
+  background: var(--app-accent);
+  color: #fff;
+}
+
+.btn-success {
+  background: var(--app-green);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: var(--app-page-bg);
+  color: var(--app-text-secondary);
+  border: 1px solid var(--app-border);
+}
+
+/* Performance bar */
+.perf-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.perf-label {
+  font-size: 12px;
+  color: var(--app-text-secondary);
+  width: 110px;
+  flex-shrink: 0;
+}
+
+.perf-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: var(--app-page-bg);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.perf-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--app-accent);
+  transition: width 0.6s ease;
+}
+
+.perf-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--app-text-primary);
+  width: 36px;
+  text-align: right;
+}
+
+/* Week chart bars */
+.week-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 80px;
+  padding-top: 4px;
+}
+
+.week-bar-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.week-bar-bg {
+  width: 100%;
+  background: var(--app-page-bg);
+  border-radius: 6px 6px 0 0;
+  height: 64px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.week-bar-fill {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+  background: var(--app-accent);
+  transition: height 0.5s ease;
+}
+
+.week-bar-fill.today {
+  background: var(--app-green);
+}
+
+.week-bar-label {
+  font-size: 10px;
+  color: var(--app-text-muted);
+  font-weight: 500;
+}
+
+/* Activity / notification */
+.activity-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.activity-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.activity-text {
+  font-size: 13px;
+  color: var(--app-text-primary);
+  line-height: 1.5;
+}
+
+.activity-time {
+  font-size: 11px;
+  color: var(--app-text-muted);
+  margin-top: 3px;
+}
+
+/* COD row */
+.cod-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.cod-row:last-child { border-bottom: none; }
+
+/* Toggle */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--app-border);
+}
+
+.toggle-row:last-child { border-bottom: none; }
+
+.toggle-label {
+  font-size: 14px;
+  color: var(--app-text-primary);
+}
+
+.toggle-sub {
+  font-size: 11px;
+  color: var(--app-text-muted);
+  margin-top: 2px;
+}
+
+/* Status hero */
+.status-hero {
+  background: var(--app-accent);
+  border-radius: 18px;
+  padding: 20px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.status-hero::before {
+  content: '';
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+}
+
+.status-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: 40px;
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+
+/* Map placeholder */
+.map-box {
+  height: 120px;
+  background: var(--app-page-bg);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1.5px dashed var(--app-border);
+}
+
+/* Separator */
+.divider {
+  height: 1px;
+  background: var(--app-border);
+  margin: 4px 0;
+}
+
+ion-refresher {
+  z-index: 10;
+}
